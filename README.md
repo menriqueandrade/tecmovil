@@ -1,6 +1,10 @@
 # dcsas
 
-A new Flutter project.
+Prueba tecnica para dcsas
+
+Frontend Flutter
+
+Backend Nodejs + vercel
 
 ## Getting Started
 
