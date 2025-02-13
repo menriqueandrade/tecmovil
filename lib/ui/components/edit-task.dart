@@ -79,15 +79,15 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
         TextButton(
           onPressed: () {
             widget.controller.updateTask(
-              widget.task.id,
+              widget.task.id!,
               Task(
-                id: widget.task.id,
+                id: widget.task.id!,
                 name: nameController.text,
                 description: descController.text,
                 status: statusValue,
               ),
             );
-            Get.back(); // Cerrar modal
+            Get.back(); 
           },
           child: const Text("Guardar"),
         ),

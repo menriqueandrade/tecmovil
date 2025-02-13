@@ -15,14 +15,14 @@ class TaskController extends GetxController {
     print('onInit called');
     print(
         '\x1B[31m⚡ Se ejecuto antes de renderizar pàntalla y se ejecuto el onInit TaskController\x1B[0m'); // Rojo
-    fetchTask();
-  }
-
+    
+}
   @override
   Future<void> onReady() async {
     super.onReady();
     print(
         '\x1B[33m⚡ Se termino de renderizar pàntalla y se ejecuto el OnReady TaskController\x1B[0m'); // Amarillo
+        fetchTask();
   }
 
   @override
@@ -44,19 +44,18 @@ class TaskController extends GetxController {
     }
   }
 
-  void addTask(Task newTask) {
-    tasks.add(newTask);
+  Future<void> addTask(Task task) async {
+    await taskGateway.addTask(task);
+    fetchTask();
   }
 
-  void removeTask(String taskId) {
-    tasks.removeWhere((task) => task.id == taskId);
+  Future<void> updateTask(String id, Task task) async {
+    await taskGateway.updateTask(id, task);
+    fetchTask();
   }
 
-  void updateTask(String taskId, Task updatedTask) {
-  int index = tasks.indexWhere((task) => task.id == taskId);
-  if (index != -1) {
-    tasks[index] = updatedTask;
-    tasks.refresh(); // Forzar actualización en la UI
+  Future<void> deleteTask(String id) async {
+    await taskGateway.deleteTask(id);
+    fetchTask();
   }
-}
 }

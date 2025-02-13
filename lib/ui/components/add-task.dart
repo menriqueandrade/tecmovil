@@ -54,7 +54,6 @@ class AddTaskDialog extends StatelessWidget {
                         descriptionController.text.isNotEmpty) {
                       controller.addTask(
                         Task(
-                          id: DateTime.now().toString(), 
                           name: nameController.text,
                           description: descriptionController.text,
                           status: "pending",
