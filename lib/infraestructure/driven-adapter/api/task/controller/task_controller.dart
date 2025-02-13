@@ -43,4 +43,20 @@ class TaskController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  void addTask(Task newTask) {
+    tasks.add(newTask);
+  }
+
+  void removeTask(String taskId) {
+    tasks.removeWhere((task) => task.id == taskId);
+  }
+
+  void updateTask(String taskId, Task updatedTask) {
+  int index = tasks.indexWhere((task) => task.id == taskId);
+  if (index != -1) {
+    tasks[index] = updatedTask;
+    tasks.refresh(); // Forzar actualización en la UI
+  }
+}
 }
